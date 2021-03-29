@@ -1,0 +1,37 @@
+Adding option for joing event online via Teams
+
+POST https://graph.microsoft.com/v1.0/me/events
+Prefer: outlook.timezone="Pacific Standard Time"
+Content-type: application/json
+
+{
+  "subject": "Prep for OKR meeting",
+  "body": {
+    "contentType": "HTML",
+    "content": "Does 1-2p work for you? In person or Teams call?"
+  },
+  "start": {
+      "dateTime": "2021-04-10T13:00:00",
+      "timeZone": "Pacific Standard Time"
+  },
+  "end": {
+      "dateTime": "2021-04-10T14:00:00",
+      "timeZone": "Pacific Standard Time"
+  },
+  "location":{
+      "displayName":"3rd floor conference room"
+  },
+  "attendees": [
+    {
+      "emailAddress": {
+        "address":"<user email>",
+        "name": "<user name>"
+      },
+      "type": "required"
+    }
+  ],
+  "allowNewTimeProposals": true,
+  # makes meeting online event via Teams
+  "isOnlineMeeting": true,
+  "onlineMeetingProvider": "teamsForBusiness"
+}
