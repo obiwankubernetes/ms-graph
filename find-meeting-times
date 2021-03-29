@@ -1,0 +1,89 @@
+#Look for a 2-hour overlapping free calendar slot w/ another user b/n April 18-20, 2021
+POST https://graph.microsoft.com/v1.0/me/findMeetingTimes
+Prefer: outlook.timezone="Pacific Standard Time"
+Content-type: application/json
+
+{ 
+  "attendees": [ 
+    { 
+      "type": "required",  
+      "emailAddress": { 
+        "name": "<User name>",
+        "address": "<User email>" 
+      } 
+    }
+  ],  
+  "locationConstraint": { 
+    "isRequired": false,  
+    "suggestLocation": false,  
+    "locations": [ 
+      { 
+        "resolveAvailability": false,
+        "displayName": "Conf room Hood" 
+      } 
+    ] 
+  },  
+  "timeConstraint": {
+    "activityDomain":"work", 
+    "timeslots": [ 
+      { 
+        "start": { 
+          "dateTime": "2021-04-18T09:00:00",  
+          "timeZone": "Pacific Standard Time" 
+        },  
+        "end": { 
+          "dateTime": "2021-04-20T17:00:00",  
+          "timeZone": "Pacific Standard Time" 
+        } 
+      } 
+    ] 
+  },  
+  "meetingDuration": "PT2H",
+  "returnSuggestionReasons": true,
+  "minimumAttendeePercentage": 100
+}
+
+# look for a meeting time on April 21, 2021
+POST https://graph.microsoft.com/v1.0/me/findMeetingTimes
+Prefer: outlook.timezone="Pacific Standard Time"
+Content-type: application/json
+
+{ 
+  "attendees": [ 
+    { 
+      "type": "required",  
+      "emailAddress": { 
+        "name": "Samantha Booth",
+        "address": "samanthab@contoso.onmicrosoft.com" 
+      } 
+    }
+  ],  
+  "locationConstraint": { 
+    "isRequired": false,  
+    "suggestLocation": false,  
+    "locations": [ 
+      { 
+        "resolveAvailability": false,
+        "displayName": "Conf room Hood" 
+      } 
+    ] 
+  },  
+  "timeConstraint": {
+    "activityDomain":"work", 
+    "timeslots": [ 
+      { 
+        "start": { 
+          "dateTime": "2021-04-21T09:00:00",  
+          "timeZone": "Pacific Standard Time" 
+        },  
+        "end": { 
+          "dateTime": "2021-04-21T17:00:00",  
+          "timeZone": "Pacific Standard Time" 
+        } 
+      } 
+    ] 
+  },  
+  "meetingDuration": "PT2H",
+  "returnSuggestionReasons": true,
+  "minimumAttendeePercentage": 100
+}
