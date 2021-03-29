@@ -1,0 +1,17 @@
+# finding free or busy time periods on a user's schedule from 4/9-15/21
+POST https://graph.microsoft.com/v1.0/me/calendar/getschedule 
+Prefer: outlook.timezone="Pacific Standard Time"
+Content-Type: application/json
+
+{        
+    "Schedules": ["<user email>"],
+    "StartTime": {
+        "dateTime": "2021-04-09T09:00:00",
+        "timeZone": "Pacific Standard Time"
+    },
+    "EndTime": {
+        "dateTime": "2018-04-15T18:00:00",
+        "timeZone": "Pacific Standard Time"
+    },
+    "availabilityViewInterval": "15"
+}
